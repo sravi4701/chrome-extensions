@@ -3,7 +3,7 @@ chrome.browserAction.onClicked.addListener(function(tab){
 	chrome.tabs.query({active : true, currentWindow : true}, function(tabs){
 		//get active tab
 		var currentTab = tabs[0];
-		// console.log(currentTab.id);
+		console.log(currentTab.id);
 
 		//send message to the content script
 
