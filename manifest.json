@@ -14,6 +14,13 @@
 		"default_title" : "hotstar linux"
 	},
 
+	"content_scripts" : [
+		{
+			"matches" : ["*://www.hotstar.com/*"],
+			"js" : ["jquery-3.2.1.min.js", "content.js"]
+		}
+	],
+
 	"background" : {
 		"scripts" : ["background.js"],
 		"persistent" : false
@@ -21,6 +28,7 @@
 
 	"permissions" : [
 		"tabs",
-		"https://*/*"
+		"https://*/*",
+		"http://*/*"
 	]
 }
