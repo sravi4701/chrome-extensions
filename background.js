@@ -10,3 +10,14 @@ chrome.browserAction.onClicked.addListener(function(tab){
 		chrome.tabs.sendMessage(currentTab.id, {"message" : "icon_clicked"});
 	});
 });
+
+chrome.runtime.onMessage.addListener(function(request, response, sendResponse){
+	console.log(request.src);
+	if(request.message === "open_hls"){
+		var src = request.src;
+		var hls_url = "https://www.hlsplayer.net/";
+		chrome.tabs.create({url : hls_url}, function(tab){
+			chrome.tabs.executeScript(tab.id, {code : "document.getElementById(\"player-src\").value = '" + src + "';document.getElementById(\"player-start\").click();"});
+		});
+	}
+});
