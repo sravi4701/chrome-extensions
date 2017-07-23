@@ -16,8 +16,10 @@ chrome.runtime.onMessage.addListener(function(request, response, sendResponse){
 	if(request.message === "open_hls"){
 		var src = request.src;
 		var hls_url = "https://www.hlsplayer.net/";
-		chrome.tabs.create({url : hls_url}, function(tab){
-			chrome.tabs.executeScript(tab.id, {code : "document.getElementById(\"player-src\").value = '" + src + "';document.getElementById(\"player-start\").click();"});
-		});
+		if(src != ""){
+			chrome.tabs.create({url : hls_url}, function(tab){
+				chrome.tabs.executeScript(tab.id, {code : "document.getElementById(\"player-src\").value = '" + src + "';document.getElementById(\"player-start\").click();"});
+			});
+		}
 	}
 });
